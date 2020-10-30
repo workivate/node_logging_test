@@ -1,0 +1,11 @@
+Type: AWS::IAM::Role
+Properties:
+  Path: /
+  RoleName: logging_test-lambdaRole
+  AssumeRolePolicyDocument: ${file(security/permissions/assumeRole.yml)}
+  Policies:
+    - PolicyName: logging_test-Policy
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - ${file(security/permissions/logging.yml)}
